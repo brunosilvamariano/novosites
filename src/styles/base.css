@@ -1,0 +1,55 @@
+/* Regras globais. Mantidas em camada para os utilitários do Tailwind poderem sobrescrever. */
+@layer base {
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body-family);
+    font-size: clamp(1.0625rem, 0.98rem + 0.3vw, 1.25rem);
+    line-height: 1.5;
+    /* `clip` em vez de `hidden`: `hidden` quebraria o position: sticky. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--accent2);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--accent2);
+    color: var(--bg);
+  }
+}
+
+/* Título de seção: herda a personalidade tipográfica do nicho. */
+.display {
+  font-family: var(--font-display-family);
+  font-weight: var(--display-weight);
+  font-variation-settings: var(--display-variation);
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
+  text-transform: var(--display-case);
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 7vw, 6.5rem);
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+/* Gutter único do projeto. */
+.gutter {
+  padding-inline: clamp(1rem, 4vw, 4rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

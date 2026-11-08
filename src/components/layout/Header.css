@@ -1,0 +1,12 @@
+/* Pílulas opacas: legíveis sobre qualquer fundo das seções. */
+.header-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 1.1rem;
+  background: #fff;
+  color: #000;
+  border-radius: 999px;
+  font-size: 1rem;
+  line-height: 1;
+}

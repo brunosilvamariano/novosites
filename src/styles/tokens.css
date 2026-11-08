@@ -1,0 +1,15 @@
+/*
+ * Ponte entre o tema do nicho e o Tailwind.
+ * Os valores --bg, --fg etc. são definidos em runtime por src/lib/theme.ts.
+ * Assim, classes como `bg-accent` e `font-display` mudam com o nicho.
+ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent2: var(--accent2);
+  --font-display: var(--font-display-family);
+  --font-body: var(--font-body-family);
+  --radius-theme: var(--radius);
+}

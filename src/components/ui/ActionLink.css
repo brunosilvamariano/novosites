@@ -1,0 +1,43 @@
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 56px;
+  padding: 0.4rem 0.45rem 0.4rem 1.5rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.action__icon {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  background: var(--accent2);
+  color: #000;
+  border-radius: var(--radius);
+}
+
+.action__icon svg {
+  position: absolute;
+  inset: 12px;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.45s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.action__icon svg:last-child {
+  transform: translate(-44px, 44px);
+}
+
+.action:hover .action__icon svg:first-child {
+  transform: translate(44px, -44px);
+}
+
+.action:hover .action__icon svg:last-child {
+  transform: none;
+}

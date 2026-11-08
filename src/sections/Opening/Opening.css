@@ -1,0 +1,42 @@
+.opening {
+  position: relative;
+  overflow: clip;
+}
+
+.opening__title {
+  width: 100%;
+}
+
+/* A arte some antes de chegar ao texto, preservando a leitura. */
+.opening canvas {
+  -webkit-mask-image: linear-gradient(#000 35%, transparent 80%);
+  mask-image: linear-gradient(#000 35%, transparent 80%);
+}
+
+/* Máscara da subida inicial; o respiro acomoda acentos e descendentes. */
+.opening__line {
+  display: block;
+  width: max-content;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+  overflow: clip;
+  overflow-clip-margin: 0.5em;
+}
+
+.fit-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.opening__char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.opening[data-layout='center'] .opening__line {
+  margin-inline: auto;
+}
+
+.opening[data-layout='center'] .opening__title {
+  text-align: center;
+}

@@ -1,0 +1,4 @@
+/* Ponto de entrada dos estilos globais. O CSS de cada seção mora ao lado do seu componente. */
+@import 'tailwindcss';
+@import './tokens.css';
+@import './base.css';

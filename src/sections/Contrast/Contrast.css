@@ -1,0 +1,88 @@
+.contrast__stage {
+  --pos: 50%;
+  position: relative;
+  height: min(86vh, 800px);
+  margin-top: 3rem;
+  overflow: clip;
+  cursor: ew-resize;
+  /* A página continua rolando na vertical quando o dedo começa aqui. */
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.contrast__layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: 2rem 5.5rem;
+}
+
+.contrast__layer--without {
+  background: color-mix(in oklab, var(--fg) 14%, var(--bg));
+  color: color-mix(in oklab, var(--fg) 72%, var(--bg));
+}
+
+.contrast__layer--with {
+  background: var(--accent);
+  color: var(--on-accent);
+  clip-path: inset(0 0 0 var(--pos));
+}
+
+.contrast__label {
+  font-weight: 600;
+}
+
+.contrast__layer--with .contrast__label {
+  text-align: right;
+}
+
+/* A mesma posição nas duas camadas faz as frases se trocarem na divisória. */
+.contrast__lines {
+  font-size: clamp(1.9rem, min(6.4vw, 10vh), 6.5rem);
+  line-height: 1.08;
+}
+
+.contrast__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--accent2);
+  pointer-events: none;
+}
+
+.contrast__handle > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: -32px;
+  background: var(--accent2);
+  color: #000;
+  border-radius: 50%;
+  font-size: 1.6rem;
+}
+
+/* Invisível e fora do alcance do ponteiro: o arraste é tratado no palco. */
+.contrast__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contrast__input:focus-visible ~ *,
+.contrast__stage:has(.contrast__input:focus-visible) .contrast__handle > span {
+  outline: 3px solid var(--fg);
+  outline-offset: 3px;
+}

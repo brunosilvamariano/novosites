@@ -1,0 +1,67 @@
+.finale {
+  background: var(--accent);
+  color: var(--on-accent);
+  padding-block: clamp(5rem, 10vw, 9rem) 6rem;
+}
+
+.finale__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Botão invertido, pois o fundo já é a cor de destaque. */
+.finale .action {
+  background: var(--on-accent);
+  color: var(--accent);
+}
+
+.finale__contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 3rem;
+  margin-top: 3rem;
+  font-style: normal;
+}
+
+.finale__contacts a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.finale__stage {
+  --x: 50%;
+  --y: 50%;
+  position: relative;
+  margin-top: 4rem;
+}
+
+.finale__name {
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--on-accent);
+}
+
+.finale__name--fill {
+  position: absolute;
+  inset: 0;
+  color: var(--on-accent);
+  -webkit-text-stroke: 0;
+  -webkit-mask-image: radial-gradient(circle 16vw at var(--x) var(--y), #000 60%, transparent 100%);
+  mask-image: radial-gradient(circle 16vw at var(--x) var(--y), #000 60%, transparent 100%);
+}
+
+/* Sem ponteiro de precisão, o nome aparece preenchido. */
+@media (hover: none) {
+  .finale__name--fill {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+.finale__legal {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+}

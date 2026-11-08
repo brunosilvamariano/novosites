@@ -1,0 +1,28 @@
+.shutter {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  pointer-events: none;
+}
+
+.shutter__bar {
+  flex: 1;
+  /* Evita frestas entre barras em larguras fracionadas. */
+  margin-right: -1px;
+  background: var(--shutter-a);
+}
+
+.shutter__bar:nth-child(even) {
+  background: var(--shutter-b);
+}
+
+.shutter__label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(2.5rem, 11vw, 10rem);
+  letter-spacing: -0.03em;
+  opacity: 0;
+}

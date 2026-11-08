@@ -1,0 +1,138 @@
+.services {
+  padding-block: clamp(5rem, 11vw, 10rem);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.services__blades {
+  display: flex;
+  gap: 8px;
+  height: min(64vh, 620px);
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.blade {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: clip;
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: min(var(--radius), 48px);
+  transition: flex-grow 0.7s cubic-bezier(0.7, 0, 0.15, 1);
+}
+
+.blade[data-open='true'] {
+  flex-grow: 5;
+  background: var(--accent2);
+  color: #000;
+}
+
+.blade__toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: clamp(1rem, 2vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  text-align: left;
+  cursor: pointer;
+}
+
+.blade__icon {
+  flex: none;
+  width: 2em;
+  height: 2em;
+}
+
+/* Fechada, o nome corre na vertical. */
+.blade[data-open='false'] .blade__toggle span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+.blade[data-open='true'] .blade__toggle {
+  bottom: auto;
+  pointer-events: none;
+  gap: 1.5rem;
+}
+
+.blade__panel {
+  position: absolute;
+  right: clamp(1rem, 2vw, 2rem);
+  bottom: clamp(1rem, 2vw, 2rem);
+  left: clamp(1rem, 2vw, 2rem);
+  display: grid;
+  gap: 1rem 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  opacity: 0;
+  transform: translateY(1rem);
+  visibility: hidden;
+}
+
+.blade[data-open='true'] .blade__panel {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: opacity 0.4s 0.35s, transform 0.5s 0.35s;
+}
+
+.blade__text {
+  max-width: 34ch;
+  font-size: 1.25em;
+  line-height: 1.25;
+}
+
+.blade__items li + li {
+  margin-top: 0.15rem;
+}
+
+/* No celular, as lâminas se empilham e abrem para baixo. */
+@media (max-width: 899px) {
+  .services__blades {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .blade {
+    flex: none;
+    min-height: 78px;
+    transition: none;
+  }
+
+  .blade__toggle,
+  .blade[data-open='true'] .blade__toggle {
+    position: relative;
+    inset: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    pointer-events: auto;
+  }
+
+  .blade__icon {
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  .blade[data-open='false'] .blade__toggle span {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .blade__panel {
+    position: static;
+    display: none;
+    padding: 0 1rem 1.25rem;
+  }
+
+  .blade[data-open='true'] .blade__panel {
+    display: grid;
+  }
+}

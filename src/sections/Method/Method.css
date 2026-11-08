@@ -1,0 +1,128 @@
+.method {
+  position: relative;
+  background: var(--accent2);
+  color: #000;
+}
+
+.method__stage {
+  --wheel: min(60vh, 42vw);
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 1rem clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  height: 100svh;
+  padding-block: clamp(4.5rem, 9vh, 6rem) clamp(5rem, 11vh, 7rem);
+  overflow: clip;
+}
+
+.method__title {
+  grid-column: 2;
+  align-self: start;
+  font-size: clamp(2rem, 4.2vw, 4.5rem);
+}
+
+.method__wheel {
+  position: relative;
+  grid-row: 1 / span 2;
+  width: var(--wheel);
+  height: var(--wheel);
+  place-self: center;
+}
+
+.method__dial {
+  position: absolute;
+  inset: 0;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.method__mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  margin: -2.2rem;
+  font-size: 2rem;
+}
+
+.method__mark > span {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--accent2);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.method__mark[data-active='true'] > span {
+  background: #000;
+  color: var(--accent2);
+}
+
+.method__steps {
+  position: relative;
+  grid-column: 2;
+  align-self: stretch;
+  margin-top: 1.5rem;
+  list-style: none;
+}
+
+.method__step {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.35s, transform 0.45s;
+}
+
+.method__step[data-active='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+.method__step h3 {
+  font-size: clamp(3rem, 8vw, 8rem);
+}
+
+.method__step p {
+  max-width: 34ch;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 899px) {
+  .method__stage {
+    --wheel: min(46vw, 28vh);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    justify-items: center;
+  }
+
+  .method__title,
+  .method__steps {
+    grid-column: 1;
+    justify-self: stretch;
+  }
+
+  .method__wheel {
+    grid-row: 2;
+  }
+
+  .method__mark {
+    width: 3rem;
+    height: 3rem;
+    margin: -1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .method__step h3 {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+}

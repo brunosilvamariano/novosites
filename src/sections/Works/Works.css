@@ -1,0 +1,72 @@
+.works__stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  overflow: clip;
+}
+
+.works__track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 5rem);
+  width: max-content;
+  padding-inline: clamp(1rem, 4vw, 4rem);
+  padding-right: 30vw;
+  will-change: transform;
+}
+
+.works__title {
+  flex: none;
+  width: min(44vw, 34rem);
+}
+
+.works__item {
+  flex: none;
+  width: min(26vw, 25rem);
+  will-change: transform;
+}
+
+.works__item[data-offset='1'] {
+  transform-origin: 50% 100%;
+  margin-top: 9vh;
+}
+
+.works__poster {
+  aspect-ratio: 4 / 5;
+  max-height: 66vh;
+  overflow: hidden;
+  border-radius: min(var(--radius), 48px);
+}
+
+/* Celular ou movimento reduzido: rolagem horizontal nativa com encaixe. */
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .works__stage {
+    position: static;
+    display: block;
+    min-height: 0;
+    padding-block: 5rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+
+  .works__track {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    padding-right: 1rem;
+  }
+
+  .works__title {
+    width: 76vw;
+  }
+
+  .works__item {
+    width: 72vw;
+    scroll-snap-align: center;
+  }
+
+  .works__item[data-offset='1'] {
+    margin-top: 0;
+  }
+}

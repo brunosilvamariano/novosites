@@ -1,0 +1,67 @@
+.diagnosis {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding-block: 6rem;
+}
+
+.diagnosis__title {
+  max-width: 34ch;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.diagnosis__sentence {
+  margin-top: 2rem;
+  font-size: clamp(2.1rem, 6.2vw, 6.5rem);
+  line-height: 1.16;
+}
+
+.diagnosis__gap {
+  display: inline;
+  padding-inline: 0.1em;
+  color: var(--accent);
+  border-bottom: 0.07em solid currentColor;
+  font: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.diagnosis__gap:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.diagnosis__gap[data-open='true'] {
+  background: var(--accent2);
+  color: #000;
+}
+
+.diagnosis__foot {
+  min-height: 7rem;
+  margin-top: 3rem;
+}
+
+.diagnosis__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.diagnosis__option {
+  min-height: 56px;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid currentColor;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.diagnosis__option:hover {
+  background: var(--fg);
+  color: var(--bg);
+}

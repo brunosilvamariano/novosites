@@ -1,0 +1,48 @@
+.manifesto {
+  --circle: 0;
+  position: relative;
+  height: 320vh;
+}
+
+/* Sem scrub (movimento reduzido), a seção vira um bloco simples. */
+@media (prefers-reduced-motion: reduce) {
+  .manifesto {
+    height: auto;
+  }
+}
+
+.manifesto__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+}
+
+.manifesto__copy {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-items: center;
+}
+
+.manifesto__copy--circle {
+  background: var(--accent);
+  color: var(--on-accent);
+  /* Raio de 0 até cobrir a diagonal da tela. */
+  clip-path: circle(calc(var(--circle) * 120vmax) at 50% 50%);
+}
+
+.manifesto__text {
+  max-width: 24ch;
+  font-size: clamp(1.9rem, 5.1vw, 5.4rem);
+  line-height: 1.08;
+}
+
+.manifesto__word {
+  opacity: 0.16;
+  transition: opacity 0.25s linear;
+}
+
+.manifesto__word.is-lit {
+  opacity: 1;
+}
